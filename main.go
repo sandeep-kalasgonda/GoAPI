@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	_ "goassignment/docs" // Path to generated docs
+	_ "goassignment/docs" // Path   to generated docs
 
 	"github.com/rs/cors" // CORS package
 	// Swagger UI
@@ -45,7 +45,7 @@ func initDatabase() {
 	if err != nil {
 		log.Fatal("Failed to migrate database:", err)
 	}
-	fmt.Println("Database connection established and schema migrated.")
+	fmt.Println("Database new established and schema migrated.")
 }
 
 // @Summary Create a new appointment
