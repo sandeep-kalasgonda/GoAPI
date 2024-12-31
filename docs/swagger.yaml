@@ -1,0 +1,124 @@
+definitions:
+  main.Appointment:
+    description: This model is used to store appointment information
+    properties:
+      date_time:
+        type: string
+      doctor:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      phone:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: This model is used to store appointment information
+paths:
+  /appointments:
+    post:
+      consumes:
+      - application/json
+      description: Create a new appointment with customer details
+      parameters:
+      - description: Appointment Details
+        in: body
+        name: appointment
+        required: true
+        schema:
+          $ref: '#/definitions/main.Appointment'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/main.Appointment'
+        "400":
+          description: Invalid JSON payload
+          schema:
+            type: string
+        "500":
+          description: Failed to create appointment
+          schema:
+            type: string
+      summary: Create a new appointment
+  /appointments/all:
+    get:
+      description: Get a list of all appointments
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Appointment'
+            type: array
+        "500":
+          description: Failed to retrieve appointments
+          schema:
+            type: string
+      summary: Get all appointments
+  /appointments/get:
+    get:
+      description: Get an appointment by its ID
+      parameters:
+      - description: Appointment ID
+        in: query
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Appointment'
+        "400":
+          description: Invalid appointment ID
+          schema:
+            type: string
+        "404":
+          description: Appointment not found
+          schema:
+            type: string
+      summary: Get an appointment by ID
+  /appointments/update:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing appointment
+      parameters:
+      - description: Appointment Details
+        in: body
+        name: appointment
+        required: true
+        schema:
+          $ref: '#/definitions/main.Appointment'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Appointment'
+        "400":
+          description: Invalid JSON payload
+          schema:
+            type: string
+        "404":
+          description: Appointment not found
+          schema:
+            type: string
+        "500":
+          description: Failed to update appointment
+          schema:
+            type: string
+      summary: Update an appointment
+swagger: "2.0"

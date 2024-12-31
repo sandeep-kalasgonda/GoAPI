@@ -43,7 +43,7 @@ func initDatabase() {
 
 	err = db.AutoMigrate(&Appointment{})
 	if err != nil {
-		log.Fatal("Failed to migrate database:", err)
+		log.Fatal("Failed to migrate database ... :", err)
 	}
 	fmt.Println("Database new established and schema migrated.")
 }
