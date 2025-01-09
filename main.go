@@ -202,7 +202,7 @@ func updateAppointment(w http.ResponseWriter, r *http.Request) {
 	var existingAppointment Appointment
 	result := db.First(&existingAppointment, updateAppointment.ID)
 	if result.Error != nil {
-		http.Error(w, "Failed to retrieve appointment", http.StatusNotFound)
+		http.Error(w, "Failed to retrieve yes appointment", http.StatusNotFound)
 		return
 	}
 
